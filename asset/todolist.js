@@ -17,11 +17,24 @@ document.addEventListener("DOMContentLoaded", function(){
 				return;
 			}
 
+			// var todoItem = document.createElement("li");
+			// todoItem.setAttribute("class", "{}");
+			// todoItem.innerHTML = '<div class="view"><input class="toggle" type="checkbox" {}><label>' 
+			// 					+ todoLabel 
+			// 					+ '</label><button class="destroy"></button></div>';
+			// var todoList = document.getElementById("todo-list");
+			// todoList.appendChild(todoItem);
+
+			// handlebar 적용
+			// [TODO] li까지 template으로 - jquery parseHTML()?
 			var todoItem = document.createElement("li");
 			todoItem.setAttribute("class", "{}");
-			todoItem.innerHTML = '<div class="view"><input class="toggle" type="checkbox" {}><label>' 
-								+ todoLabel 
-								+ '</label><button class="destroy"></button></div>';
+			var source = '<div class="view"><input class="toggle" type="checkbox" {}><label>{{todoLabel}}</label><button class="destroy"></button></div>';
+			var template = Handlebars.compile(source);
+			var data = {"todoLabel" : todoLabel};
+			var result = template(data);
+			
+			todoItem.innerHTML = result;
 			var todoList = document.getElementById("todo-list");
 			todoList.appendChild(todoItem);
 
