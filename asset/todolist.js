@@ -1,3 +1,5 @@
+//NEXT 2015_2학기_HTML5 : shinyoung
+
 /* 150702
  * enter키(keycode : 13) 입력 이벤트 발생 시 todo(li element) 추가
  * AddTodoItemToList()
@@ -14,6 +16,11 @@
 /* 1507011
  * 등록/삭제 애니메이션 추가 
  * 왜 투명도가 바뀌는데 보이는건 똑같으냐......!!!!!!
+ */
+
+/* 150713
+ * keyframe(transform) 사용 css애니메이션 코드 추가. 띠용띠용.
+ * custom.css - shake
  */
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -35,17 +42,23 @@ function AddTodoItemToList(event){
 		}
 		var createdTodoItem = createTodoItem(todoLabel);
 
-		createdTodoItem.style.opacity = 0;
-		var welcome = setInterval(function(){
-			if(parseFloat(createdTodoItem.style.opacity) >= 1){
-				document.getElementById("todo-list").appendChild(createdTodoItem);
-				newTodo.value = "";
-				clearInterval(welcome);
-			}
-			else{
-				createdTodoItem.style.opacity = parseFloat(createdTodoItem.style.opacity) + 0.03;
-			}
-		},16);
+        //animation #using js setInterval()
+//		createdTodoItem.style.opacity = 0;
+//		var welcome = setInterval(function(){
+//			if(parseFloat(createdTodoItem.style.opacity) >= 1){
+//				document.getElementById("todo-list").appendChild(createdTodoItem);
+//				newTodo.value = "";
+//				clearInterval(welcome);
+//			}
+//			else{
+//				createdTodoItem.style.opacity = parseFloat(createdTodoItem.style.opacity) + 0.03;
+//			}
+//		},16);
+        
+        //animation #using css keyframes
+        createdTodoItem.classList.add("shake");
+        document.getElementById("todo-list").appendChild(createdTodoItem);
+        newTodo.value = "";
 	}
 }
 
