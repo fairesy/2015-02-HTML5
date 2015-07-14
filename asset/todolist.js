@@ -25,14 +25,14 @@
 
 document.addEventListener("DOMContentLoaded", function(){
 	var newTodo = document.getElementById("new-todo");
-	newTodo.addEventListener("keydown", AddTodoItemToList, false);
+	newTodo.addEventListener("keydown", addTodoItemToList, false);
 
 	var todoList = document.getElementById("main");
 	todoList.addEventListener("click", completeTodoItem ,false);
 	todoList.addEventListener("click", destroyTodoItem, false);
 });
 
-function AddTodoItemToList(event){
+function addTodoItemToList(event){
 	if(event.keyCode === 13){
 		var newTodo = document.getElementById("new-todo");
 		var todoLabel = newTodo.value;
